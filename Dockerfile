@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:alpine
 
 LABEL "com.github.actions.name"="github-action-publish-binaries"
 LABEL "com.github.actions.description"="Upload artifacts when new releases are made"
@@ -10,8 +10,7 @@ LABEL repository="http://github.com/skx/github-action-publish-binaries"
 LABEL homepage="http://github.com/skx/github-action-publish-binaries"
 LABEL maintainer="Steve Kemp <steve@steve.fi>"
 
-RUN apt-get update
-RUN apt-get install --yes \
+RUN apk add --update --no-cache \
   ca-certificates \
   curl \
   jq
